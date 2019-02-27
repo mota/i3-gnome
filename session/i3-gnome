@@ -5,6 +5,15 @@ test -n "$DESKTOP_AUTOSTART_ID" && {
     dbus-send --print-reply --session --dest=org.gnome.SessionManager "/org/gnome/SessionManager" org.gnome.SessionManager.RegisterClient "string:i3-gnome" "string:$DESKTOP_AUTOSTART_ID"
 }
 
+export TERM_NAME=gnome-terminal
+xinput set-prop 10 282 1
+xinput set-prop 10 290 1
+setxkbmap -option caps:escape
+xset r rate 500 40
+xmodmap -e 'keycode 112 = Left'
+xmodmap -e 'keycode 117 = Right'
+
+
 i3
 
 test -n "$DESKTOP_AUTOSTART_ID" && {
